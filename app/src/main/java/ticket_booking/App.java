@@ -3,12 +3,29 @@
  */
 package ticket_booking;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+       //System.out.println(new App().getGreeting());
+        
+        List<Integer> l=Arrays.asList(1,2,3,4,5);//java takes this as an arraylist
+        List<Integer> l1=l.stream().filter(i -> i%2==0).collect(Collectors.toList());
+        List<Integer> l2=l.stream().filter(isOdd()).collect(Collectors.toList());
+        
+        System.out.println(l1);
+        System.out.println(l2);
+        
+    }
+    
+    public static Predicate<Integer>  isOdd(){
+    	return i->(i%2!=0);
     }
 }
